@@ -1,10 +1,10 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import { appointmentService } from "./services/AppointmentService";
 
 export const routes = Router();
 
-routes.get("/atendimentos", (req, res) => {
-  return res.json({ hello: "world" });
-});
+routes.get("/atendimentos/:id", appointmentService.listAService);
 
-routes.post("/atendimentos", appointmentService.execute);
+routes.get("/atendimentos/", appointmentService.listAllServices);
+
+routes.post("/atendimentos", appointmentService.addAService);
